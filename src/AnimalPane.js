@@ -7,17 +7,13 @@ class AnimalPane extends Component {
   render(){
     var animal = this.getAnimal();
     return (
-      <table className="AnimalPane">
-        <tr>
-          <button className="FirstButton" > First Buttton </button>
-        </tr>
-        <tr>
-          <button className="SecondButton" > Second Button </button>
-        </tr>
-        <tr>
-          <img src={animal[0]} className="TheAnimal" alt={animal[1]} />
-        </tr>
-      </table>
+      <div>
+        <button className="FirstButton" > First Buttton </button>
+        <br />
+        <button className="SecondButton" > Second Button </button>
+        <br />
+        <img src={animal[0]} className="TheAnimal" alt={animal[1]} />
+      </div>
     );
   }
 }
