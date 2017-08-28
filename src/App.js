@@ -14,7 +14,7 @@ class App extends Component {
         <table className= "Board">
           <tr>
             <td>
-              <AnimalPane />
+              <AnimalPane isHuman={true} />
             </td>
             <td>
               <AnimalPane />
