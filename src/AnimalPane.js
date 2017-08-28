@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 
 class AnimalPane extends Component {
   getAnimal(){
-    return "http://i.imgur.com/gSEFJey.jpg";
+    return ["http://i.imgur.com/gSEFJey.jpg", "dog1"];
   }
   render(){
+    var animal = this.getAnimal();
     return (
-      <div className="AnimalPane">
-        <button className="FirstButton" > First Buttton </button>
-	<button className="SecondButton" > Second Button </button>
-	<img src={this.getAnimal()} className="TheAnimal" />
-      </div>
+      <table className="AnimalPane">
+        <tr>
+          <button className="FirstButton" > First Buttton </button>
+        </tr>
+        <tr>
+          <button className="SecondButton" > Second Button </button>
+        </tr>
+        <tr>
+          <img src={animal[0]} className="TheAnimal" alt={animal[1]} />
+        </tr>
+      </table>
     );
   }
 }
