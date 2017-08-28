@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import AnimalPane from './AnimalPane.js';
+import Board from './Board.js';
 
 class App extends Component {
   render() {
@@ -11,16 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <table className= "Board">
-          <tr>
-            <td>
-              <AnimalPane isHuman={true} />
-            </td>
-            <td>
-              <AnimalPane />
-            </td>
-          </tr>
-        </table>
+        <Board />
       </div>
     );
   }
