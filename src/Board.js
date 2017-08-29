@@ -44,6 +44,10 @@ class Board extends Component {
     this.gameState.playerDogGotPat();
   }
 
+  computerDogGotPat() {
+    this.gameState.computerDogGotPat();
+  }
+
   render() {
     return (
       <table>
@@ -80,7 +84,8 @@ class Board extends Component {
               <PlayerControls
                 playerType = "dog"
                 computerType = "dog"
-                patCallback = { () => this.playerDogGotPat() }
+                playerPatCallback = { () => this.playerDogGotPat() }
+                computerPatCallback = { () => this.computerDogGotPat() }
                />
             </td>
           </tr>

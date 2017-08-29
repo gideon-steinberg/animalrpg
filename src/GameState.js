@@ -5,20 +5,42 @@ class GameState extends Component {
     super();
     
     this.state = {
-      numberOfPets : 0
+      numberOfPlayerPats : 0,
+      numberOfComputerPats : 0
     };
   }
 
   playerDogGotPat() {
-    this.setState({
-      numberOfPets : this.state.numberOfPets + 1
-    });
+    var newState = Object.assign({}, this.state);
+    newState.numberOfPlayerPats = newState.numberOfPlayerPats + 1;
+
+    this.setState(newState);
+  }
+
+  computerDogGotPat() {
+    var newState = Object.assign({}, this.state);
+    newState.numberOfComputerPats = newState.numberOfComputerPats + 1;
+
+    this.setState(newState);
+  }
+
+  calculateNumberOfPats() {
+    var computer = this.state.numberOfComputerPats;
+    var player = this.state.numberOfPlayerPats;
+    var result = computer + player;
+
+    if ( Math.abs(player - computer) > 2 )
+    {
+      result = Math.floor(result / 2);
+    }
+
+    return result;
   }
 
   render() {
     return (
       <div>
-        Number of times pat = { this.state.numberOfPets }
+        Pat score = { this.calculateNumberOfPats() }
       </div>
     );
   }

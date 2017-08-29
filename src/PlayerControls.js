@@ -7,7 +7,8 @@ class PlayerControls extends Component {
     this.state = {
       playerType : props.playerType,
       computerType : props.computerType,
-      patCallback : props.patCallback
+      playerPatCallback : props.playerPatCallback,
+      computerPatCallback : props.computerPatCallback
     };
   }
   
@@ -15,13 +16,17 @@ class PlayerControls extends Component {
     return ( 
       <div>
         <button
-          className="PatButton"
-          onClick={ () => this.state.patCallback() }
+          onClick={ () => this.state.playerPatCallback() }
         >
-          Pat the dog
+          Pat your {this.state.playerType}
         </button>
         <br />
-        <button className="SecondButton" > Second Button </button>
+        <button
+          onClick={ () => this.state.computerPatCallback() }
+        >
+          Pat the computers {this.state.computerType}
+        </button>
+        <br />
         <br />
       </div>
     );
