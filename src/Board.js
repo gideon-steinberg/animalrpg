@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import AnimalPane from './AnimalPane.js';
+import PlayerControls from './PlayerControls.js';
+import GameState from './GameState.js';
 
 class Board extends Component {
-  constructor(){
+  constructor() {
     super();
 
     var player = this.getAnimal(-1);
@@ -38,6 +40,10 @@ class Board extends Component {
     return randomDog;
   }
 
+  playerDogGotPat() {
+    this.gameState.playerDogGotPat();
+  }
+
   render() {
     return (
       <table>
@@ -50,18 +56,30 @@ class Board extends Component {
         <tbody>
           <tr>
             <td>
-              <AnimalPane image={this.state.computerAnimal[0]} name = {this.state.playerAnimal[1]} />
+              <AnimalPane
+                image = {this.state.computerAnimal[0]}
+                name  = {this.state.playerAnimal[1]}
+              />
             </td>
             <td>
-              <AnimalPane image={this.state.playerAnimal[0]} name = {this.state.computerAnimal[1]} />
+              <AnimalPane
+                image = {this.state.playerAnimal[0]}
+                name  = {this.state.computerAnimal[1]}
+              />
+            </td>
+            <td>
+              <GameState
+                ref={(gameState) => {this.gameState = gameState}}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <button className="FirstButton" > First Buttton </button>
-              <br />
-              <button className="SecondButton" > Second Button </button>
-              <br />
+              <PlayerControls
+                playerType = "dog"
+                computerType = "dog"
+                patCallback = { () => this.playerDogGotPat() }
+               />
             </td>
           </tr>
         </tbody>
