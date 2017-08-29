@@ -5,7 +5,7 @@ class GameState extends Component {
     super();
     
     this.state = {
-      lastActions : [],
+      lastActions : Array(8).fill(''),
       numberOfActionsToDisplay : 8,
       numberOfPlayerPats : 0,
       numberOfComputerPats : 0,

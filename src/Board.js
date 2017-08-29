@@ -80,15 +80,6 @@ class Board extends Component {
               />
             </td>
             <td>
-              <GameState
-                ref={(gameState) => {this.gameState = gameState}}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td>
               <PlayerControls
                 playerType = "dog"
                 computerType = "dog"
@@ -97,6 +88,10 @@ class Board extends Component {
                 playerHugCallback = { () => this.playerDogGotHugged() }
                 computerHugCallback = { () => this.computerDogGotHugged() }
                />
+              <hr />
+              <GameState
+                ref={(gameState) => {this.gameState = gameState}}
+              />
             </td>
           </tr>
         </tbody>
