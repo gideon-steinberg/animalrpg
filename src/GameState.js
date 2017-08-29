@@ -12,18 +12,49 @@ class GameState extends Component {
     };
   }
 
-  playerDogGotPat() {
+  computerAction() {
+    var random = Math.floor(Math.random() * 4) % 4;
+
+    if      (random === 0) this.playerDogGotPat(false);
+    else if (random === 1) this.playerDogGotHugged(false);
+    else if (random === 2) this.computerDogGotPat(false);
+    else                   this.computerDogGotHugged(false);
+  }
+
+  playerDogGotPat(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfPlayerPats = newState.numberOfPlayerPats + 1;
 
     this.setState(newState);
+
+    if (isPlayer) this.computerAction();
   }
 
-  computerDogGotPat() {
+  computerDogGotPat(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfComputerPats = newState.numberOfComputerPats + 1;
 
     this.setState(newState);
+
+    if (isPlayer) this.computerAction();
+  }
+
+  playerDogGotHugged(isPlayer) {
+    var newState = Object.assign({}, this.state);
+    newState.numberOfPlayerHugs = newState.numberOfPlayerHugs + 1;
+
+    this.setState(newState);
+
+    if (isPlayer) this.computerAction();
+  }
+
+  computerDogGotHugged(isPlayer) {
+    var newState = Object.assign({}, this.state);
+    newState.numberOfComputerHugs = newState.numberOfComputerHugs + 1;
+
+    this.setState(newState);
+
+    if (isPlayer) this.computerAction();
   }
 
   calculatePatScore() {
@@ -37,20 +68,6 @@ class GameState extends Component {
     }
 
     return result;
-  }
-
-  playerDogGotHugged() {
-    var newState = Object.assign({}, this.state);
-    newState.numberOfPlayerHugs = newState.numberOfPlayerHugs + 1;
-
-    this.setState(newState);
-  }
-
-  computerDogGotHugged() {
-    var newState = Object.assign({}, this.state);
-    newState.numberOfComputerHugs = newState.numberOfComputerHugs + 1;
-
-    this.setState(newState);
   }
 
   calculateHugScore() {

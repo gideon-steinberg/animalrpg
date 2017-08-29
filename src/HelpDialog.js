@@ -28,7 +28,7 @@ class HelpDialog extends Component {
           <HelpState1 />
         </div>
       );
-    } else if (this.state.dialogTree == 1) {
+    } else if (this.state.dialogTree === 1) {
       return (
         <div>
           <HelpDialogButton

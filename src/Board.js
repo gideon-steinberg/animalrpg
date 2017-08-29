@@ -41,19 +41,19 @@ class Board extends Component {
   }
 
   playerDogGotPat() {
-    this.gameState.playerDogGotPat();
+    this.gameState.playerDogGotPat(true);
   }
 
   computerDogGotPat() {
-    this.gameState.computerDogGotPat();
+    this.gameState.computerDogGotPat(true);
   }
 
   playerDogGotHugged() {
-    this.gameState.playerDogGotHugged();
+    this.gameState.playerDogGotHugged(true);
   }
 
   computerDogGotHugged() {
-    this.gameState.computerDogGotHugged();
+    this.gameState.computerDogGotHugged(true);
   }
 
   render() {
