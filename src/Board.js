@@ -40,22 +40,6 @@ class Board extends Component {
     return randomDog;
   }
 
-  playerDogGotPat() {
-    this.gameState.playerDogGotPat(true);
-  }
-
-  computerDogGotPat() {
-    this.gameState.computerDogGotPat(true);
-  }
-
-  playerDogGotHugged() {
-    this.gameState.playerDogGotHugged(true);
-  }
-
-  computerDogGotHugged() {
-    this.gameState.computerDogGotHugged(true);
-  }
-
   render() {
     return (
       <table>
@@ -83,10 +67,10 @@ class Board extends Component {
               <PlayerControls
                 playerType = "dog"
                 computerType = "dog"
-                playerPatCallback = { () => this.playerDogGotPat() }
-                computerPatCallback = { () => this.computerDogGotPat() }
-                playerHugCallback = { () => this.playerDogGotHugged() }
-                computerHugCallback = { () => this.computerDogGotHugged() }
+                playerPatCallback =   { () => this.gameState.playerDogGotPat(true) }
+                computerPatCallback = { () => this.gameState.computerDogGotPat(true) }
+                playerHugCallback =   { () => this.gameState.playerDogGotHugged(true) }
+                computerHugCallback = { () => this.gameState.computerDogGotHugged(true) }
                />
               <hr />
               <GameState
