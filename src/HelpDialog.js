@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HelpState1, HelpState2 } from './HelpStates.js'
+import { HelpState1, HelpState2, HelpState3 } from './HelpStates.js'
 import HelpDialogButton from './HelpDialogButton.js'
 
 class HelpDialog extends Component {
@@ -11,7 +11,7 @@ class HelpDialog extends Component {
   }
 
   nextHelpItem() {
-    var nextState = (this.state.dialogTree + 1) % 2;
+    var nextState = (this.state.dialogTree + 1) % 3;
 
     // Don't show the welcome message again
     if (nextState === 0) { nextState = 1; }
@@ -28,7 +28,7 @@ class HelpDialog extends Component {
           <HelpState1 />
         </div>
       );
-    } else {
+    } else if (this.state.dialogTree == 1) {
       return (
         <div>
           <HelpDialogButton
@@ -37,6 +37,16 @@ class HelpDialog extends Component {
           <HelpState2 />
         </div>
       );
+    } else {
+      return (
+        <div>
+          <HelpDialogButton
+            onClick = { () => this.nextHelpItem() }
+          />
+          <HelpState3 />
+        </div>
+      );
+
     }
   }
 }

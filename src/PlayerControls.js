@@ -8,7 +8,9 @@ class PlayerControls extends Component {
       playerType : props.playerType,
       computerType : props.computerType,
       playerPatCallback : props.playerPatCallback,
-      computerPatCallback : props.computerPatCallback
+      computerPatCallback : props.computerPatCallback,
+      playerHugCallback : props.playerHugCallback,
+      computerHugCallback : props.computerHugCallback
     };
   }
   
@@ -27,7 +29,20 @@ class PlayerControls extends Component {
           Pat the computers {this.state.computerType}
         </button>
         <br />
+
+        <button
+          onClick={ () => this.state.playerHugCallback() }
+        >
+          Hug your {this.state.playerType}
+        </button>
         <br />
+        <button
+          onClick={ () => this.state.computerHugCallback() }
+        >
+          Hug the computers {this.state.computerType}
+        </button>
+        <br />
+
       </div>
     );
   }

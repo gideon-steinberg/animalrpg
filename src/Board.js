@@ -48,6 +48,14 @@ class Board extends Component {
     this.gameState.computerDogGotPat();
   }
 
+  playerDogGotHugged() {
+    this.gameState.playerDogGotHugged();
+  }
+
+  computerDogGotHugged() {
+    this.gameState.computerDogGotHugged();
+  }
+
   render() {
     return (
       <table>
@@ -86,6 +94,8 @@ class Board extends Component {
                 computerType = "dog"
                 playerPatCallback = { () => this.playerDogGotPat() }
                 computerPatCallback = { () => this.computerDogGotPat() }
+                playerHugCallback = { () => this.playerDogGotHugged() }
+                computerHugCallback = { () => this.computerDogGotHugged() }
                />
             </td>
           </tr>
