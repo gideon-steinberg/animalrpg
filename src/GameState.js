@@ -5,6 +5,8 @@ class GameState extends Component {
     super();
     
     this.state = {
+      lastActions : [],
+      numberOfActionsToDisplay : 8,
       numberOfPlayerPats : 0,
       numberOfComputerPats : 0,
       numberOfPlayerHugs : 0,
@@ -25,6 +27,10 @@ class GameState extends Component {
     var newState = Object.assign({}, this.state);
     newState.numberOfPlayerPats = newState.numberOfPlayerPats + 1;
 
+    var actor = isPlayer ? "player" : "computer";
+    newState.lastActions.push("The " + actor + " patted the players dog.");
+    newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
+
     this.setState(newState);
 
     if (isPlayer) this.computerAction();
@@ -33,6 +39,10 @@ class GameState extends Component {
   computerDogGotPat(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfComputerPats = newState.numberOfComputerPats + 1;
+
+    var actor = isPlayer ? "player" : "computer";
+    newState.lastActions.push("The " + actor + " patted the computers dog.");
+    newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
 
@@ -43,6 +53,10 @@ class GameState extends Component {
     var newState = Object.assign({}, this.state);
     newState.numberOfPlayerHugs = newState.numberOfPlayerHugs + 1;
 
+    var actor = isPlayer ? "player" : "computer";
+    newState.lastActions.push("The " + actor + " hugged the players dog.");
+    newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
+
     this.setState(newState);
 
     if (isPlayer) this.computerAction();
@@ -51,6 +65,10 @@ class GameState extends Component {
   computerDogGotHugged(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfComputerHugs = newState.numberOfComputerHugs + 1;
+
+    var actor = isPlayer ? "player" : "computer";
+    newState.lastActions.push("The " + actor + " hugged the computers dog.");
+    newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
 
@@ -97,6 +115,14 @@ class GameState extends Component {
         Hug score = { this.calculateHugScore() }
         <br />
         Total score = { this.calculateTotalScore() }
+
+        <hr />
+        Action History:
+        <ul>
+          { this.state.lastActions.map(function(action, index) {
+            return <li key={index}>{action}</li>;
+          })}
+        </ul>
       </div>
     );
   }
