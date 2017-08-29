@@ -57,13 +57,13 @@ class Board extends Component {
           <tr>
             <td>
               <AnimalPane
-                image = {this.state.computerAnimal[0]}
+                image = {this.state.playerAnimal[0]}
                 name  = {this.state.playerAnimal[1]}
               />
             </td>
             <td>
               <AnimalPane
-                image = {this.state.playerAnimal[0]}
+                image = {this.state.computerAnimal[0]}
                 name  = {this.state.computerAnimal[1]}
               />
             </td>
