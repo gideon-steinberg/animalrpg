@@ -74,6 +74,8 @@ class Board extends Component {
             </td>
           </tr>
           <tr>
+            <td />
+            <td />
             <td>
               <PlayerControls
                 playerType = "dog"

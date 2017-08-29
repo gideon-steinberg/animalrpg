@@ -16,7 +16,7 @@ class PlayerControls extends Component {
       <div>
         <button
           className="PatButton"
-          onClick={() => this.state.patCallback()}
+          onClick={ () => this.state.patCallback() }
         >
           Pat the dog
         </button>
