@@ -49,18 +49,20 @@ class Board extends Component {
         </thead>
         <tbody>
           <tr>
-          </tr>
             <td>
               <AnimalPane image={this.state.computerAnimal[0]} name = {this.state.playerAnimal[1]} />
             </td>
             <td>
               <AnimalPane image={this.state.playerAnimal[0]} name = {this.state.computerAnimal[1]} />
             </td>
+          </tr>
           <tr>
-            <button className="FirstButton" > First Buttton </button>
-            <br />
-            <button className="SecondButton" > Second Button </button>
-            <br />
+            <td>
+              <button className="FirstButton" > First Buttton </button>
+              <br />
+              <button className="SecondButton" > Second Button </button>
+              <br />
+            </td>
           </tr>
         </tbody>
       </table>
