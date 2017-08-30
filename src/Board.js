@@ -2,16 +2,28 @@ import React, { Component } from 'react';
 import AnimalPane from './AnimalPane.js';
 import PlayerControls from './PlayerControls.js';
 import GameState from './GameState.js';
+import PlayerUpdateAnimalControls from './PlayerUpdateAnimalControls.js'
+
 import { availableAnimals } from './utils/AnimalGenerator.js'
 
 class Board extends Component {
+
   constructor() {
     super();
 
     this.state = {
-      playerAnimalType : availableAnimals()[0],
-      computerAnimalType : availableAnimals()[1]
-    };
+      playerType : availableAnimals()[0],
+      computerType : availableAnimals()[1]
+    }
+  }
+
+  setPlayerType(playerType) {
+    var computerType = availableAnimals()[1];
+
+    this.playerAnimalPane.setAnimalType(playerType);
+    this.computerAnimalPane.setAnimalType(computerType);
+    this.gameState.setTypes(playerType, computerType);
+    this.playerControls.setTypes(playerType, computerType);
   }
 
   render() {
@@ -27,28 +39,38 @@ class Board extends Component {
           <tr>
             <td>
               <AnimalPane
-                type = { this.state.playerAnimalType }
+                type = { this.state.playerType }
+                ref={(playerAnimalPane) => {this.playerAnimalPane = playerAnimalPane}}
               />
             </td>
             <td>
               <AnimalPane
-                type = { this.state.computerAnimalType }
+                type = { this.state.computerType }
+                ref={(computerAnimalPane) => {this.computerAnimalPane = computerAnimalPane}}
               />
             </td>
             <td>
               <PlayerControls
-                playerType = { this.state.playerAnimalType }
-                computerType = { this.state.computerAnimalType }
+                playerType = { this.state.playerType }
+                computerType = { this.state.computerType }
                 playerPatCallback =   { () => this.gameState.playerGotPat(true) }
                 computerPatCallback = { () => this.gameState.computerGotPat(true) }
                 playerHugCallback =   { () => this.gameState.playerGotHugged(true) }
                 computerHugCallback = { () => this.gameState.computerGotHugged(true) }
+                ref={(playerControls) => {this.playerControls = playerControls}}
                />
               <hr />
               <GameState
                 ref={(gameState) => {this.gameState = gameState}}
-                playerType = { this.state.playerAnimalType }
-                computerType = { this.state.computerAnimalType }
+                playerType = { this.state.playerType }
+                computerType = { this.state.computerType }
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <PlayerUpdateAnimalControls
+                updateCallback = { (type) => this.setPlayerType(type) }
               />
             </td>
           </tr>

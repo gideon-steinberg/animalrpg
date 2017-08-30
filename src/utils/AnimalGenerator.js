@@ -14,10 +14,10 @@ function getAnimalLink(animalType) {
 
 function getAnimalList(animalType) {
   switch(animalType) {
-    case "fox": return foxList();
-    case "dog": return dogList();
-    case "cat": return catList();
-    default: throw 'Unknown Animal Type'; 
+    case 'fox': return foxList();
+    case 'dog': return dogList();
+    case 'cat': return catList();
+    default: throw new Error('Unknown Animal Type');
   }
 }
 

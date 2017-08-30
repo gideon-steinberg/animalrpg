@@ -13,6 +13,14 @@ class PlayerControls extends Component {
       computerHugCallback : props.computerHugCallback
     };
   }
+
+  setTypes(playerType, computerType) {
+    var newState = Object.assign({}, this.state);
+    newState.playerType = playerType;
+    newState.computerType = computerType;    
+
+    this.setState(newState);
+  }
   
   render() {
     return ( 

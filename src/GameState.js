@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class GameState extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       lastActions : Array(8).fill(''),
       numberOfActionsToDisplay : 8,
@@ -11,19 +11,42 @@ class GameState extends Component {
       numberOfComputerPats : 0,
       numberOfPlayerHugs : 0,
       numberOfComputerHugs : 0,
-      playerType : props.playerType,
-      computerType : props.computerType
+      playerType : props.playerType, 
+      computerType : props.computerType 
     };
+  }
+
+  setTypes(playerType, computerType) {
+    var newState = Object.assign({}, this.state);
+    newState.playerType = playerType;
+    newState.computerType = computerType;    
+
+    this.setState(newState);
+  }
+
+  playerType() {
+    return this.state.playerType;
+  }
+
+  computerType() {
+    return this.state.computerType;
   }
 
   computerAction() {
     var random = Math.floor(Math.random() * 4) % 4;
 
     switch (random) {
-      case 0:  this.playerGotPat(false);
-      case 1:  this.playerGotHugged(false);
-      case 2:  this.computerGotPat(false);
-      default: this.computerGotHugged(false);
+      case 0:
+        this.playerGotPat(false);
+        break;
+      case 1:
+        this.playerGotHugged(false);
+        break;
+      case 2:
+        this.computerGotPat(false);
+        break;
+      default: 
+        this.computerGotHugged(false);
     }
   }
 
