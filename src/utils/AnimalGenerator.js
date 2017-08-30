@@ -1,7 +1,7 @@
 export { getAnimalLink, availableAnimals };
 
 function availableAnimals() {
-  return ["dog"];
+  return ["fox", "dog", "cat"];
 }
 
 function getAnimalLink(animalType) {
@@ -14,7 +14,9 @@ function getAnimalLink(animalType) {
 
 function getAnimalList(animalType) {
   switch(animalType) {
+    case "fox": return foxList();
     case "dog": return dogList();
+    case "cat": return catList();
     default: throw 'Unknown Animal Type'; 
   }
 }
@@ -24,5 +26,24 @@ function dogList() {
            "https://i.redd.it/jir3ivdb1diz.jpg",
            "https://i.redd.it/el7zyljm7diz.jpg",
            "https://i.redd.it/ocm8vwpsbciz.jpg",
-           "https://i.redd.it/fib9v78bs9iz.jpg" ];
+           "https://i.redd.it/fib9v78bs9iz.jpg",
+           "https://i.redd.it/ew6zksck0siz.jpg",
+           "http://i.imgur.com/rSURMBH.gif" ];
+}
+
+function foxList() {
+  return [ "https://i.imgur.com/1dsVswi.jpg",
+           "http://i.imgur.com/5d5pYxx.jpg",
+           "https://i.redd.it/mp6gel8ihjhz.png",
+           "http://i.imgur.com/vB31Dm0.jpg",
+           "http://i.imgur.com/bKicRSa.jpg" ];
+
+}
+
+function catList() {
+  return [ "http://i.imgur.com/oa3WtOT.jpg",
+           "https://i.redd.it/g93nrh6h0tiz.jpg",
+           "https://i.imgur.com/fYkAegF.gif",
+           "https://i.redd.it/4aqyyf8qpriz.jpg",
+           "https://i.redd.it/f8ksap8b5piz.jpg" ];
 }

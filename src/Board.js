@@ -10,7 +10,7 @@ class Board extends Component {
 
     this.state = {
       playerAnimalType : availableAnimals()[0],
-      computerAnimalType : availableAnimals()[0]
+      computerAnimalType : availableAnimals()[1]
     };
   }
 

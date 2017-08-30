@@ -19,10 +19,12 @@ class GameState extends Component {
   computerAction() {
     var random = Math.floor(Math.random() * 4) % 4;
 
-    if      (random === 0) this.playerGotPat(false);
-    else if (random === 1) this.playerGotHugged(false);
-    else if (random === 2) this.computerGotPat(false);
-    else                   this.computerGotHugged(false);
+    switch (random) {
+      case 0:  this.playerGotPat(false);
+      case 1:  this.playerGotHugged(false);
+      case 2:  this.computerGotPat(false);
+      default: this.computerGotHugged(false);
+    }
   }
 
   playerGotPat(isPlayer) {
