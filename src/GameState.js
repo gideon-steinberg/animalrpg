@@ -55,7 +55,9 @@ class GameState extends Component {
     newState.numberOfPlayerPats = newState.numberOfPlayerPats + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " patted the players " + this.state.playerType + ".");
+    var whichAnimal = isPlayer ? "their" : "the players";
+
+    newState.lastActions.push("The " + actor + " patted " + whichAnimal + " " + this.state.playerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
@@ -68,7 +70,9 @@ class GameState extends Component {
     newState.numberOfComputerPats = newState.numberOfComputerPats + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " patted the computers " + this.state.computerType + ".");
+    var whichAnimal = !isPlayer ? "their" : "the computers";
+
+    newState.lastActions.push("The " + actor + " patted " + whichAnimal + " " + this.state.computerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
@@ -81,7 +85,9 @@ class GameState extends Component {
     newState.numberOfPlayerHugs = newState.numberOfPlayerHugs + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " hugged the players " + this.state.playerType + ".");
+    var whichAnimal = isPlayer ? "their" : "the players";
+
+    newState.lastActions.push("The " + actor + " hugged " + whichAnimal + " " + this.state.playerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
@@ -94,7 +100,9 @@ class GameState extends Component {
     newState.numberOfComputerHugs = newState.numberOfComputerHugs + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " hugged the computers " + this.state.computerType + ".");
+    var whichAnimal = !isPlayer ? "their" : "the computers";
+
+    newState.lastActions.push("The " + actor + " hugged " + whichAnimal + " " + this.state.computerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
