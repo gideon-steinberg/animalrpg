@@ -24,6 +24,10 @@ export class HelpState2 extends Component {
         You work together with the computer
         <br />
         Every turn you chose an action and then the computer does
+        <br />
+        You can choose which species you like but when you do everything resets
+        <br />
+        The computer will choose one of the species you did not
         <hr />
       </div>
     );
