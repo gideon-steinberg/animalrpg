@@ -2,42 +2,16 @@ import React, { Component } from 'react';
 import AnimalPane from './AnimalPane.js';
 import PlayerControls from './PlayerControls.js';
 import GameState from './GameState.js';
+import { availableAnimals } from './utils/AnimalGenerator.js'
 
 class Board extends Component {
   constructor() {
     super();
 
-    var player = this.getAnimal(-1);
-    var computer = this.getAnimal(player);
-
     this.state = {
-      playerAnimal : this.dogs()[player],
-      computerAnimal : this.dogs()[computer]
+      playerAnimalType : availableAnimals()[0],
+      computerAnimalType : availableAnimals()[0]
     };
-  }
-
-  dogs() {
-    return [
-      ["http://i.imgur.com/gSEFJey.jpg", "dog1"],
-      ["https://i.redd.it/jir3ivdb1diz.jpg", "dog2"],
-      ["https://i.redd.it/el7zyljm7diz.jpg", "dog3"],
-      ["https://i.redd.it/ocm8vwpsbciz.jpg", "dog4"],
-      ["https://i.redd.it/fib9v78bs9iz.jpg", "dog5"]
-    ];
-  }
-
-  getAnimal(previousDog) {
-    var random = Math.random();
-    var dogs = this.dogs();
-    var randomDog = Math.floor(random * dogs.length)
-    
-    while (previousDog === randomDog)
-    {
-      random = Math.random();
-      randomDog = Math.floor(random * dogs.length)
-    }
-
-    return randomDog;
   }
 
   render() {
@@ -53,28 +27,28 @@ class Board extends Component {
           <tr>
             <td>
               <AnimalPane
-                image = {this.state.playerAnimal[0]}
-                name  = {this.state.playerAnimal[1]}
+                type = { this.state.playerAnimalType }
               />
             </td>
             <td>
               <AnimalPane
-                image = {this.state.computerAnimal[0]}
-                name  = {this.state.computerAnimal[1]}
+                type = { this.state.computerAnimalType }
               />
             </td>
             <td>
               <PlayerControls
-                playerType = "dog"
-                computerType = "dog"
-                playerPatCallback =   { () => this.gameState.playerDogGotPat(true) }
-                computerPatCallback = { () => this.gameState.computerDogGotPat(true) }
-                playerHugCallback =   { () => this.gameState.playerDogGotHugged(true) }
-                computerHugCallback = { () => this.gameState.computerDogGotHugged(true) }
+                playerType = { this.state.playerAnimalType }
+                computerType = { this.state.computerAnimalType }
+                playerPatCallback =   { () => this.gameState.playerGotPat(true) }
+                computerPatCallback = { () => this.gameState.computerGotPat(true) }
+                playerHugCallback =   { () => this.gameState.playerGotHugged(true) }
+                computerHugCallback = { () => this.gameState.computerGotHugged(true) }
                />
               <hr />
               <GameState
                 ref={(gameState) => {this.gameState = gameState}}
+                playerType = { this.state.playerAnimalType }
+                computerType = { this.state.computerAnimalType }
               />
             </td>
           </tr>

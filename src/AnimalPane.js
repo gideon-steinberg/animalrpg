@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import { getAnimalLink } from './utils/AnimalGenerator.js'
 
 class AnimalPane extends Component {
   constructor(props) {
     super(props);
-
+    var typeFromProps = this.props.type;
     this.state = {
-      animalImage : this.props.image,
-      animalName : this.props.name,
+      type : typeFromProps,
+      image : getAnimalLink(typeFromProps)
     };
   }
 
   render() {
     return (
-      <img src={this.state.animalImage} className="TheAnimal" alt={this.state.animalName} width="500px" height="500px" />
+      <img src={this.state.image} alt={this.state.type} width="500px" height="500px" />
     );
   }
 }

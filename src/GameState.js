@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class GameState extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     
     this.state = {
       lastActions : Array(8).fill(''),
@@ -10,25 +10,27 @@ class GameState extends Component {
       numberOfPlayerPats : 0,
       numberOfComputerPats : 0,
       numberOfPlayerHugs : 0,
-      numberOfComputerHugs : 0
+      numberOfComputerHugs : 0,
+      playerType : props.playerType,
+      computerType : props.computerType
     };
   }
 
   computerAction() {
     var random = Math.floor(Math.random() * 4) % 4;
 
-    if      (random === 0) this.playerDogGotPat(false);
-    else if (random === 1) this.playerDogGotHugged(false);
-    else if (random === 2) this.computerDogGotPat(false);
-    else                   this.computerDogGotHugged(false);
+    if      (random === 0) this.playerGotPat(false);
+    else if (random === 1) this.playerGotHugged(false);
+    else if (random === 2) this.computerGotPat(false);
+    else                   this.computerGotHugged(false);
   }
 
-  playerDogGotPat(isPlayer) {
+  playerGotPat(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfPlayerPats = newState.numberOfPlayerPats + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " patted the players dog.");
+    newState.lastActions.push("The " + actor + " patted the players " + this.state.playerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
@@ -36,12 +38,12 @@ class GameState extends Component {
     if (isPlayer) this.computerAction();
   }
 
-  computerDogGotPat(isPlayer) {
+  computerGotPat(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfComputerPats = newState.numberOfComputerPats + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " patted the computers dog.");
+    newState.lastActions.push("The " + actor + " patted the computers " + this.state.computerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
@@ -49,12 +51,12 @@ class GameState extends Component {
     if (isPlayer) this.computerAction();
   }
 
-  playerDogGotHugged(isPlayer) {
+  playerGotHugged(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfPlayerHugs = newState.numberOfPlayerHugs + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " hugged the players dog.");
+    newState.lastActions.push("The " + actor + " hugged the players " + this.state.playerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
@@ -62,12 +64,12 @@ class GameState extends Component {
     if (isPlayer) this.computerAction();
   }
 
-  computerDogGotHugged(isPlayer) {
+  computerGotHugged(isPlayer) {
     var newState = Object.assign({}, this.state);
     newState.numberOfComputerHugs = newState.numberOfComputerHugs + 1;
 
     var actor = isPlayer ? "player" : "computer";
-    newState.lastActions.push("The " + actor + " hugged the computers dog.");
+    newState.lastActions.push("The " + actor + " hugged the computers " + this.state.computerType + ".");
     newState.lastActions = newState.lastActions.slice(-this.state.numberOfActionsToDisplay);
 
     this.setState(newState);
