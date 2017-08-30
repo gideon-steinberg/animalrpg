@@ -19,7 +19,12 @@ class GameState extends Component {
   setTypes(playerType, computerType) {
     var newState = Object.assign({}, this.state);
     newState.playerType = playerType;
-    newState.computerType = computerType;    
+    newState.computerType = computerType;
+    newState.lastActions = Array(8).fill(''),
+    newState.numberOfPlayerPats = 0;
+    newState.numberOfPlayerHugs = 0;
+    newState.numberOfComputerPats = 0;
+    newState.numberOfComputerHugs = 0;
 
     this.setState(newState);
   }
