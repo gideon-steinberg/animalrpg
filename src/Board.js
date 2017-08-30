@@ -11,14 +11,26 @@ class Board extends Component {
   constructor() {
     super();
 
+    var player = availableAnimals()[0];
+
     this.state = {
-      playerType : availableAnimals()[0],
-      computerType : availableAnimals()[1]
+      playerType : player,
+      computerType : this.getNewComputerType(player)
     }
   }
 
+  getNewComputerType(playerType) {
+
+    var types = availableAnimals().filter(function(animal){
+      return animal !== playerType;
+    });
+
+    var random = Math.floor(Math.random() * types.length);
+    return types[random]; 
+  }
+
   setPlayerType(playerType) {
-    var computerType = availableAnimals()[1];
+    var computerType = this.getNewComputerType(playerType); 
 
     this.playerAnimalPane.setAnimalType(playerType);
     this.computerAnimalPane.setAnimalType(computerType);
